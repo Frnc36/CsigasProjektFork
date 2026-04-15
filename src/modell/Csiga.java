@@ -1,5 +1,7 @@
 package modell;
 
+import java.util.Objects;
+
 public class Csiga {
     private static final char UT_SZIMPLA = '-';
     private static final char UT_DUPLA = '=';
@@ -32,6 +34,17 @@ public class Csiga {
     private String megtettUt;
     private boolean gyorsito;
 
+    public Csiga(){
+        Csiga(szinKod, megtettUt,gyorsito);
+        Csiga(RED);
+    }
+    
+    public Csiga(String szinKod, String megtettUt, boolean gyorsito) {
+        this.szinKod = szinKod;
+        this.megtettUt = megtettUt;
+        this.gyorsito = gyorsito;
+    }
+    
     public Csiga(String szin) {
         this.szin = szin;
         setSzinKod();
@@ -85,5 +98,32 @@ public class Csiga {
             megtettUt += jel;
         }
     }
-    
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 97 * hash + Objects.hashCode(this.szin);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Csiga other = (Csiga) obj;
+        return Objects.equals(this.szin, other.szin);
+    }
+
+    @Override
+    public String toString() {
+        return "Csiga{" + "szin=" + szin + ", megtettUt=" + megtettUt + ", gyorsito=" + gyorsito + '}';
+    }
+ 
 }

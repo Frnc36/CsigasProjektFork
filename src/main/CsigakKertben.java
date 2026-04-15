@@ -70,11 +70,14 @@ public class CsigakKertben {
         csigak[0].megy();
         int oszlop = 2;
         
-        //ezt mondta az AI
         for (int i = 1; i < kert.length - 1; i++) {
             kert[i][oszlop] = ' ';
         }
-        //-
+        //AI
+        for (int i = 1; i < kert.length - 1; i++) {
+            kert[i][oszlop] = ' ';
+        }
+
         int hanyatLep = csigak[0].getMegtettUt().length();
         for (int i = 1; i < hanyatLep; i++) {
             kert[i][oszlop] = '.';
@@ -84,12 +87,13 @@ public class CsigakKertben {
         Csiga csiga = csigak[1];
         if (csiga != null) {
             oszlop = 5;
-            //ezt mondta az AI
+            
+            //AI
             csiga.megy();
             for (int i = 1; i < kert.length - 1; i++) {
                 kert[i][oszlop] = ' ';
             }
-            //-
+
             hanyatLep = csiga.getMegtettUt().length();
             for (int i = 1; i < hanyatLep; i++) {
                 kert[i][oszlop] = '.';

@@ -7,11 +7,11 @@ public class CsigaVerseny {
 
     private static final Scanner sc = new Scanner(System.in);
     private static final String RESET = "\u001B[0m";
-    
+
     private final Csiga[] csigak;
     private final String[] palya;
     private int fogadas;
-    
+
     public static void main(String[] args) {
         new CsigaVerseny();
     }
@@ -37,7 +37,7 @@ public class CsigaVerseny {
         for (int i = 0; i < csigak.length; i++) {
             Csiga csiga = csigak[i];
             String kod = csiga.getSzinKod();
-            String ki = "%s%d. %5s |%s\n".formatted(kod, i+1, csiga.getSzin(), Csiga.getABRA_1());
+            String ki = "%s%d. %5s |%s\n".formatted(kod, i + 1, csiga.getSzin(), Csiga.getABRA_1());
             mutatKonzolon(ki);
         }
     }
@@ -46,11 +46,11 @@ public class CsigaVerseny {
         mutatKonzolon("Melyik csigára fogadsz? Add meg a sorszámát (1-3): ");
         fogadas = sc.nextInt() - 1;
     }
-    
-    private void verseny(){
+
+    private void verseny() {
         verseny(5);
     }
-    
+
     private void verseny(int kor) {
         mutatKonzolon("A(z) %d körös verseny állapota:\n".formatted(kor));
         for (int i = 0; i < kor; i++) {
@@ -65,7 +65,7 @@ public class CsigaVerseny {
             palya[i] = csigak[i].getMegtettUt();
         }
     }
-    
+
     private void allastMutat() {
         for (int i = 0; i < csigak.length; i++) {
             Csiga csiga = csigak[i];
@@ -76,23 +76,23 @@ public class CsigaVerseny {
     }
 
     private String eredmeny() {
-        if(fogadas == leghosszabbUt()){
+        if (fogadas == leghosszabbUt()) {
             return "Nyertél!";
-        }else{
+        } else {
             return "Vesztettél!";
         }
     }
-    
+
     private int leghosszabbUt() {
         int m = 0;
         for (int i = 1; i < palya.length; i++) {
-            if(palya[i].length() > palya[m].length()){
+            if (palya[i].length() > palya[m].length()) {
                 m = i;
             }
         }
         return m;
     }
-    
+
     private void mutatKonzolon(String info) {
         System.out.print(RESET + info);
     }
